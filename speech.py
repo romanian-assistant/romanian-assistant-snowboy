@@ -40,7 +40,7 @@ def recognition(engine='', api_key=''):
 
 
 def synthesis(text_to_say):
-    language = 'en'
+    language = 'ro'
     tts = gTTS(text=text_to_say, lang=language)
     tts.save('tts.mp3')
     audio_helper.play_audio('tts.mp3')
