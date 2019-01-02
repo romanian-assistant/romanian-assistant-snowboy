@@ -4,7 +4,7 @@
 import requests
 import json
 from datetime import datetime
-import ConfigParser
+import configparser
 import random
 
 class Weather:
@@ -12,7 +12,7 @@ class Weather:
 
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read('config.py')
         url = "https://api.forecast.io/forecast/"
 

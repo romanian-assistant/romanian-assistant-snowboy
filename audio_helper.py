@@ -1,7 +1,7 @@
 from pygame import mixer
 from mutagen.mp3 import MP3
 import os
-import thread
+import _thread as thread
 
 
 def play_audio(file_path):

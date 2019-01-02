@@ -4,8 +4,8 @@
 import lights
 import bash_scripts
 import os
-import thread
-import ConfigParser
+import _thread as thread
+import configparser
 import audio_helper
 import speech
 import weather as forecast
@@ -14,7 +14,7 @@ import urllib
 interrupted = False
 previous_command = ''
 hotword_detector = ''
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 
 
 def init():
