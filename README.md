@@ -39,6 +39,10 @@ api_key: your_dark_sky_api_token
   location_lon: your_longitude
   location_lat: your_latitude
   units: uk2
+
+[recognizer]
+engine: 'witai' or 'google'
+api_key: you_api_key_here
   ```
 
 # Running everything

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # import snowboy.snowboydecoder as snowboydecoder
 import lights
 import bash_scripts
@@ -8,7 +10,6 @@ import audio_helper
 import speech
 import weather as forecast
 import urllib
-
 
 interrupted = False
 previous_command = ''
@@ -55,7 +56,7 @@ def init():
                 )
             )
 
-    sensitivity = [0.4]*len(hotword_models)
+    sensitivity = [0.4] * len(hotword_models)
 
     # Setup hotword detector
     global hotword_detector
@@ -112,7 +113,10 @@ def hotword_callback(keyword):
 
 
 def second_level_commands():
-    recognised_speech = speech.recognition()
+    recognizer_engine = config.get('recognizer', 'engine')
+    recognizer_api_key = config.get('recognizer', 'api_key')
+
+    recognised_speech = speech.recognition(recognizer_engine, recognizer_api_key)
     if recognised_speech:
         if 'weather' in recognised_speech:
             weather = forecast.Weather()
@@ -127,9 +131,11 @@ def second_level_commands():
 def play_confirmation_sound():
     audio_helper.play_audio('audio/start.wav')
 
+
 def signal_handler(signal, frame):
     global interrupted
     interrupted = True
+
 
 def interrupt_callback():
     global interrupted

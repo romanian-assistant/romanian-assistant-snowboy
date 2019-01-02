@@ -4,10 +4,13 @@ import speech_recognition as sr
 import os
 import audio_helper
 
+ENGINE_WITAI='witai'
+ENGINE_GOOGLE='gtts'
+
 recogniser = sr.Recognizer()
 
 
-def recognition():
+def recognition(engine='', api_key=''):
     global recogniser
     logging.info('Listening...')
 
@@ -15,7 +18,13 @@ def recognition():
         with sr.Microphone() as source:
             audio = recogniser.record(source, duration=2)
 
-        result = recogniser.recognize_google(audio, language='en-GB').lower()
+        result = None
+
+        if ENGINE_WITAI == engine:
+            result = recogniser.recognize_wit(audio, key=api_key)
+        elif ENGINE_GOOGLE == engine:
+            result = recogniser.recognize_google(audio, language='en-GB').lower()
+
         os.system('play audio/confirmation.wav')
         print('Recognised: %s' % result)
 

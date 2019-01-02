@@ -1,6 +1,10 @@
 [snowboy]
 raspberry_pi: False
 
+[recognizer]
+engine: 'witai'
+api_key: ''
+
 [hue]
 user: your_hue_user_id
 bridge_ip: your_hue_bridge_ip_address
